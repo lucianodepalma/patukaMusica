@@ -1,0 +1,39 @@
+/*
+    Colores de la pagina
+    #FFAECB Rosa
+*/
+
+.header{
+    display: flex;
+    flex-direction: row;
+    height: 20vh;
+    justify-content: space-between;
+}
+.logo {
+    display: block;
+    height: 80%;
+    margin: 10%;
+}
+.titulo {
+    font-size: 65px;
+}
+.login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 30px;
+}
+.loginIcon {
+    font-size: 5em;
+    color:#FFAECB;
+    text-align: center;
+}
+.loginButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.loginButtons p {
+    margin: 0px;
+    margin-left: 10px;
+}
