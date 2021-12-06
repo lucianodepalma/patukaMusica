@@ -1,12 +1,12 @@
 import '../assets/css/App.css';
-import Body from './Body';
+import Home from './Home';
 import Header from './Header';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Body/>
+      <Home/>
     </div>
   );
 }

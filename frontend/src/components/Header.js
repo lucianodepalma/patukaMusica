@@ -10,7 +10,7 @@ function Header() {
             <img src={logo} className='logo' alt="logo" />
           </div>
           <div>
-            <h1 className='titulo'>Patuka Musica</h1>
+            <h1 className='titulo'>Patuka Música</h1>
           </div>
           <div className='login'>
             <div className='loginIcon'>
