@@ -1,11 +1,12 @@
 import '../assets/css/Home.css'
 
-function Body() {
+function Main() {
     return (
-      <div className='body'>
-          
+      <div className='main'>
+          <div className='imagenFondo'>
+          </div>
       </div>
     );
   }
   
-  export default Body;
+  export default Main;

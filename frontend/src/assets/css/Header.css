@@ -1,22 +1,28 @@
 /*
     Colores de la pagina
     #FFAECB Rosa
+    #043db0 Azul
 */
 
 .header{
     display: flex;
     flex-direction: row;
+    width: 1536px;
     height: 20vh;
+    margin-left: 8%;
     justify-content: space-between;
 }
 .logo {
     display: block;
-    height: 80%;
-    margin: 10%;
+    width: 240px;
+    margin: 20px;
+    margin-top: -15px;
 }
 .titulo {
-    font-size: 80px;
+    font-size: 120px;
     font-family: 'Corinthia', cursive;
+    margin-top: 25px;
+    color: #043db0;
 }
 .login {
     display: flex;
@@ -26,7 +32,7 @@
 }
 .loginIcon {
     font-size: 5em;
-    color:#FFAECB;
+    color: #043db0;
     text-align: center;
 }
 .loginButtons {

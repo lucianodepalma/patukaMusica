@@ -1,4 +1,14 @@
-.body {
-    background-color: #FFAECB;
-    height: 70vh;
+.main {
+    margin-top: 10px;
+    width: 1536px;
+    height: 864px;
+}
+.imagenFondo {
+    background-image: url('http://localhost:3000/static/media/fondoDePantalla.c1af1fdc.png');
+    background-size: cover;
+    width: 100%;
+    max-width: 1920px;
+    height: 100%;
+    max-height: 1080px;
+    margin-left: 10%;
 }

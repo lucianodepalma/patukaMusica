@@ -1,5 +1,5 @@
 import '../assets/css/Header.css';
-import logo from '../assets/images/Capturadepantalla2021-12-01171347.png';
+import logo from '../assets/images/logo.png';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
 
