@@ -6,9 +6,31 @@
 .imagenFondo {
     background-image: url('http://localhost:3000/static/media/fondoDePantalla.c1af1fdc.png');
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 1920px;
     height: 100%;
     max-height: 1080px;
-    margin-left: 10%;
+}
+.info-producto{
+    display: flex;
+    width: 70%;
+    height: 55%;
+    justify-content: space-between;
+    align-items: center;
+    border: solid;
+    border-radius: 15px;
+    border-color: black;
+}
+.descripcion-producto{
+    margin-right: 10%;
+}
+.descripcion-producto ul{
+    display: flex;
+    flex-direction: column;
+}
+.producto {
+    width: 500px;
 }

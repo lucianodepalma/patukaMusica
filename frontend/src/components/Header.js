@@ -6,19 +6,18 @@ import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
 function Header() {
     return (
       <div className='header'>
-          <div>
+          <div className='logo-div'>
             <img src={logo} className='logo' alt="logo" />
           </div>
-          <div>
+          <div className='titulo-div'>
             <h1 className='titulo'>Patuka Música</h1>
           </div>
           <div className='login'>
-            <div className='loginIcon'>
-                <FontAwesomeIcon icon={faUserCircle}/>
-            </div>
             <div className='loginButtons'>
-                <p>Login</p>
-                <p>Registro</p>
+                <p>Instagram</p>
+                <p>Facebook</p>
+                <p>Twitter</p>
+                <p>LinkedIn</p>
             </div>
           </div>
       </div>
