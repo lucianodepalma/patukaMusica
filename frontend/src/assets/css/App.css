@@ -5,3 +5,7 @@
   text-align: center;
   align-items: center;
 }
+a{
+  text-decoration: unset;
+  color: unset;
+}

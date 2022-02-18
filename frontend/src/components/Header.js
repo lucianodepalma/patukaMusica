@@ -1,7 +1,7 @@
 import '../assets/css/Header.css';
 import logo from '../assets/images/logo.png';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
+//import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+//import {} from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
     return (
@@ -14,10 +14,10 @@ function Header() {
           </div>
           <div className='login'>
             <div className='loginButtons'>
-                <p>Instagram</p>
-                <p>Facebook</p>
-                <p>Twitter</p>
-                <p>LinkedIn</p>
+                <a href='https://www.instagram.com/patuka.musica/'><p>Instagram</p></a>
+                <a href='https://localhost:3000'><p>Facebook</p></a>
+                <a href='https://localhost:3000'><p>Twitter</p></a>
+                <a href='https://localhost:3000'><p>LinkedIn</p></a>
             </div>
           </div>
       </div>

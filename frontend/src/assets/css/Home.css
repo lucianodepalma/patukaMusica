@@ -4,7 +4,7 @@
     height: 864px;
 }
 .imagenFondo {
-    background-image: url('http://localhost:3000/static/media/fondoDePantalla.c1af1fdc.png');
+    background-image: url('http://localhost:3001/images/fondoDePantalla.png');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -25,6 +25,10 @@
     border-color: black;
 }
 .descripcion-producto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     margin-right: 10%;
 }
 .descripcion-producto ul{
@@ -33,4 +37,19 @@
 }
 .producto {
     width: 500px;
+}
+ul{
+    padding-inline-start: 0px;
+}
+.nombre {
+    font-size: 2em;
+}
+.boton-compra {
+    font-size: 25px;
+    border-radius: 10px;
+    color: #043db0;
+    background-color: #fff;
+    border: solid;
+    border-color: #043db0;
+    border-width: 1px;
 }
