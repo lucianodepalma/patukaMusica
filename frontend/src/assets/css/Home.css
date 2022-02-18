@@ -42,12 +42,19 @@ ul{
     padding-inline-start: 0px;
 }
 .nombre {
-    font-size: 2em;
+    font-size: 40px;
+    color: #043db0;
+}
+.descripcion {
+    color: #043db0;
+    font-size: large;
 }
 .boton-compra {
     font-size: 25px;
-    border-radius: 10px;
+    border-radius: 20px;
     color: #043db0;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: #fff;
     border: solid;
     border-color: #043db0;

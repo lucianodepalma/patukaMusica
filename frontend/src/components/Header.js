@@ -15,9 +15,8 @@ function Header() {
           <div className='login'>
             <div className='loginButtons'>
                 <a href='https://www.instagram.com/patuka.musica/'><p>Instagram</p></a>
-                <a href='https://localhost:3000'><p>Facebook</p></a>
-                <a href='https://localhost:3000'><p>Twitter</p></a>
-                <a href='https://localhost:3000'><p>LinkedIn</p></a>
+                <a href='https://localhost:3000'><p>Youtube</p></a>
+                <a href='https://localhost:3000'><p>Mail</p></a>
             </div>
           </div>
       </div>
