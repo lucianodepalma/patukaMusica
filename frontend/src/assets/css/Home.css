@@ -60,3 +60,29 @@ ul{
     border-color: #043db0;
     border-width: 1px;
 }
+.imagen-producto {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.imagen-principal img {
+    width: 500px;
+    border-radius: 5px;
+    border: solid;
+    border-width: 1px;
+    border-color: #043db0;
+}
+.imagenes-retrato {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.imagenes-retrato img {
+    width: 100px;
+    height: 70px;
+    border-radius: 5px;
+    border: solid;
+    border-width: 1px;
+    border-color: #043db0;
+}

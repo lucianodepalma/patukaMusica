@@ -1,3 +1,4 @@
+import React from 'react';
 import '../assets/css/App.css';
 import Home from './Home';
 import Header from './Header';

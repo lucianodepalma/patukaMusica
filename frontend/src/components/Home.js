@@ -1,14 +1,13 @@
+import React from 'react';
 import '../assets/css/Home.css';
-import producto from '../assets/images/DSC_0035-removebg-previewd.png';
+import Imagenes from './Imagenes';
 
 function Main() {
     return (
       <div className='main'>
           <div className='imagenFondo'>
             <div className='info-producto'>
-              <div className='imagen-producto'>
-                <img src={producto} className='producto' alt="producto" />
-              </div>
+              <Imagenes/>
               <div className='descripcion-producto'>
                 <div>
                   <ul>
