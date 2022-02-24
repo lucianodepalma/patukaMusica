@@ -1,0 +1,17 @@
+.navBar {
+    margin-top: auto;
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    color: #043db0;
+}
+.navBar div {
+    display: flex;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-right: solid;
+    border-color: #043db0;
+    text-align: center;
+    align-items: center;
+}
