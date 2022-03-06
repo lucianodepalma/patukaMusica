@@ -4,6 +4,7 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
+  font-family: 'TT Milks Script', 'ExtraBold';
 }
 a{
   text-decoration: unset;
