@@ -4,6 +4,19 @@
     exito: "#1ed12d"
  */
 
-.error-icon {
+.error-icono {
     color: #bb2929;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+input {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+select {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
