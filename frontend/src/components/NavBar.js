@@ -7,7 +7,6 @@ function NavBar () {
     return (
         <div className='navBar'>
             <Link to='/'><div>Fiesta Selvática</div></Link>
-            <Link to='/curso'><div>Curso online</div></Link>
             <Link to='/redes'><div>Redes Sociales</div></Link>
             <Link to='/descargas'><div>Descargas</div></Link>
         </div>
