@@ -1,0 +1,28 @@
+.redes{
+    display: flex;
+    flex-direction: column;
+}
+.titulo {
+    color: #043db0;
+    margin-bottom: 70px;
+    font-size: 30px;
+}
+.download {
+    width: 50px;
+    height: 60px;
+    margin-bottom: -20px;
+}
+.desc {
+    display: flex;
+    flex-direction: row;
+    color: #043db0;
+    text-align: center;
+    justify-content: space-around;
+}
+.link{
+    padding: 5px 15px 20px 15px;
+    border: solid;
+    border-radius: 15px;
+    border-color: black;
+    font-size: 30px;
+}

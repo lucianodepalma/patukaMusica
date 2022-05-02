@@ -4,7 +4,7 @@
     height: 864px;
 }
 .imagenFondo {
-    background-image: url('http://localhost:3001/images/fondoDePantalla.png');
+    background-image: url('http://localhost:3000/fondoDePantalla.png');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -18,7 +18,7 @@
     display: flex;
     width: 70%;
     height: 55%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     border: solid;
     border-radius: 15px;
@@ -54,8 +54,9 @@ ul{
     border-radius: 20px;
     color: #043db0;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 12px;
     padding-bottom: 5px;
+    padding-top: 3px;
     background-color: #fff;
     border: solid;
     border-color: #043db0;

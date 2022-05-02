@@ -79,7 +79,7 @@ function Formulario () {
                     <option value={'3'}>3</option>
                 </select></div>
                 <label>Precio final: ${precioProducto}</label>
-                <input className="boton-compra" type="submit" value="Pagar"/>
+                <button className="boton-compra" type="submit" value="Pagar">Pagar</button>
             </form>
         </div>
     )

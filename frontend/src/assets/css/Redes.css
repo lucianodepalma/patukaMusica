@@ -1,0 +1,16 @@
+.insta img {
+    width: 205px;
+    height: 205px;
+}
+.youtube {
+    margin-left: 190px;
+}
+.redes{
+    display: flex;
+    flex-direction: column;
+}
+.titulo {
+    color: #043db0;
+    margin-bottom: 70px;
+    font-size: 30px;
+}

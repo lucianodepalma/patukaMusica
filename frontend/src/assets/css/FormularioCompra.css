@@ -7,16 +7,30 @@
 .error-icono {
     color: #bb2929;
 }
-
+h2{
+    color: #043db0;
+}
 .formulario {
     display: flex;
     flex-direction: column;
+    color: #043db0;
 }
 input {
     margin-top: 15px;
     margin-bottom: 15px;
+    width: 100%;
 }
 select {
     margin-top: 15px;
     margin-bottom: 15px;
+}
+.boton-compra{
+    font-size: 25px;
+    border-radius: 20px;
+    color: #043db0;
+    margin-top: 10px;
+    background-color: #fff;
+    border: solid;
+    border-color: #043db0;
+    border-width: 1px;
 }

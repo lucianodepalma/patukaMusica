@@ -1,11 +1,11 @@
 import React from 'react';
 import '../assets/css/App.css';
 import Libro from './Libro';
-import Curso from './Curso';
+import Redes from './Redes';
+import Descargas from './Descargas';
 import FormularioCompra from './FormularioCompra';
-import Pagar from './Pagar.js';
 import Header from './Header';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
@@ -13,11 +13,11 @@ function App() {
       <Header/>
       <Routes>
         <Route exact path='/' element={<Libro/>}/>
-        <Route path='/curso' element={<Curso/>}/>
-        <Route path='/redes' element={<Curso/>}/>
-        <Route path='/descargas' element={<Curso/>}/>
+        <Route path='/redes' element={<Redes/>}/>
+        <Route path='/descargas' element={<Descargas/>}/>
         <Route path='/formulario-compra' element={<FormularioCompra/>}/>
-        <Route path='/pagar' element={<Pagar/>}/>
+        <Route path='/pagar' element={ Navigate }
+          loc="https://facebook.com"/>
       </Routes>
     </div>
   );
