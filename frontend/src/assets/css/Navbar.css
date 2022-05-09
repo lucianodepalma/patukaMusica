@@ -15,3 +15,7 @@
     text-align: center;
     align-items: center;
 }
+.navButton:hover {
+    background-color: #043db0;
+    color: #fff;
+}
