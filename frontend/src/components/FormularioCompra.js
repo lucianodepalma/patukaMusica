@@ -1,26 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
 import '../assets/css/FormularioCompra.css';
-import { useNavigate } from "react-router-dom";
-import { validateEmail } from "../utils/helpers";
+/* Custom hooks */
+import { validateField, validateEmail } from '../utils/useValidation';
 
 function Formulario () {
 
     const [paises, setPaises] = useState([]);
-    const [nombre, setNombre] = useState('');
-    const [apellido, setApellido] = useState('');
-    const [provincia, setProvincia] = useState('');
-    const [direccionFactura, setDireccionFactura] = useState('');
-    const [direccionEntrega, setDireccionEntrega] = useState('');
-    const [email, setEmail] = useState('');
-    const [cantidadProductos, setCantidadProductos] = useState('');
+    const [errorNombre, setErrorNombre] = useState(false);
+    const [errorApellido, setErrorApellido] = useState(false);
+    const [errorDNI, setErrorDNI] = useState(false);
+    const [errorProvincia, setErrorProvincia] = useState(false);
+    const [errorDireccionFactura, setErrorDireccionFactura] = useState(false);
+    const [errorDireccionEntrega, setErrorDireccionEntrega] = useState(false);
+    const [errorEmail, setErrorEmail] = useState(false);
     const [precioProducto, setPrecioProducto] = useState(3700);
-    const [fail, setFail] = useState (false);
+    const [fail, setFail] = useState(true)
     const form = useRef();
-    const errors = {};
-    const navigate = useNavigate();
+    const errors = {
+        errorNombre: 'Tienes que introducir tu nombre.',
+        errorApellido: 'Tienes que introducir tu apellido.',
+        errorProvincia: 'Tienes que introducir tu provincia.',
+        errorDNI: 'Tienes que introducir tu DNI.',
+        errorDireccionFactura: 'Tienes que introducir una dirección de facturación.',
+        errorDireccionEntrega: 'Tienes que introducir una dirección de entrega.',
+        errorEmail: 'Tienes que introducir tu dirección de email.'
+    };
 
     useEffect( () => {
         fetch ('https://restcountries.com/v2/all')
@@ -32,12 +37,73 @@ function Formulario () {
 
     const cambiarNombre = (e) => {
         const value=e.target.value;
-        setNombre(value);
+        if(!value.trim()) {
+            setErrorNombre (true);
+            return;
+        } else {
+            setErrorNombre (false);
+
+        }
     }
 
     const cambiarApellido = (e) => {
         const value=e.target.value;
-        setApellido (value);
+        if(!value.trim()) {
+            setErrorApellido (true);
+            return;
+        } else {
+            setErrorApellido (false);
+        }
+    }
+
+    const cambiarDNI = (e) => {
+        const value=e.target.value;
+        if(!value.trim()) {
+            setErrorDNI (true);
+            return;
+        } else {
+            setErrorDNI (false);
+        }
+    }
+
+    const cambiarProvincia = (e) => {
+        const value=e.target.value;
+        if(!value.trim()) {
+            setErrorProvincia (true);
+            return;
+        } else {
+            setErrorProvincia (false);
+        }
+    }
+
+    const cambiarDireccionFactura = (e) => {
+        const value=e.target.value;
+        if(!value.trim()) {
+            setErrorDireccionFactura (true);
+            return;
+        } else {
+            setErrorDireccionFactura (false);
+        }
+    }
+
+    const cambiarDireccionEntrega = (e) => {
+        const value=e.target.value;
+        if(!value.trim()) {
+            setErrorDireccionEntrega (true);
+            return;
+        } else {
+            setErrorDireccionEntrega (false);
+        }
+    }
+
+    const cambiarEmail = (e) => {
+        const value=e.target.value;
+        if(!value.trim()) {
+            setErrorEmail (true);
+            return;
+        } else {
+            setErrorEmail (false);
+        }
     }
 
     const cambiarPrecioProducto = (e) => {
@@ -45,47 +111,29 @@ function Formulario () {
         setPrecioProducto (value*3700)
     }
 
+    //Metodo para comprobar si alguno de los campos tenga error cuando envian el formulario, si hay error devuelve true.
+    const comprobarErrores = () => {
+        if(errorNombre || errorApellido || errorDNI || errorProvincia || errorDireccionEntrega || errorDireccionFactura || errorEmail) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     const enviar = (e, req, res) => {
         e.preventDefault();
 
-        if (!nombre.trim()) {
-            setFail (true);
-            Object.defineProperty (errors, 'nombre', {
-                value: 'Tienes que introducir tu nombre', 
-                writable: false
+        if (!comprobarErrores) {
+            emailjs.sendForm('service_3okwr8s', 'template_qcok7kf', form.current, 'AR1smxZMOiEXukHUr')
+            .then((result) => {
+              console.log(result.text);
+            }, (error) => {
+              console.log(error.text);
             });
-            return;
+            
+        } else {
+            
         }
-        if (!apellido.trim()) {
-            setFail (true);
-            Object.defineProperty (errors, 'apellido', {
-                value:'Tienes que introducir tu apellido', 
-                writable: false
-            });
-            return;
-        }
-        if (!provincia.trim()) {
-            setFail (true);
-            Object.defineProperty (errors, 'provincia', {value:'Tienes que introducir tu provincia', writable: false});
-            return;
-        }
-        if (!email.trim()){
-            setFail (true);
-            Object.defineProperty (errors, 'email', {value:'Tienes que introducir tu email', writable: false});
-            return;
-        } else if (!validateEmail) {
-            Object.defineProperty (errors, 'emailValido', {value:'Tienes que introducir un email valido', writable: false});
-            return;
-        }
-
-        emailjs.sendForm('service_3okwr8s', 'template_qcok7kf', form.current, 'AR1smxZMOiEXukHUr')
-        .then((result) => {
-          console.log(result.text);
-        }, (error) => {
-          console.log(error.text);
-        });
-      
-        navigate('/pagar', {replace:true})
 
     }
 
@@ -94,19 +142,25 @@ function Formulario () {
             <h2>Detalle de facturación</h2>
             <form className="formulario" ref={form} onSubmit={enviar}>
                 <label><input placeholder="Nombre" type={"text"} name="nombre" onMouseLeave={cambiarNombre}/></label>
-                {fail ? <span>{errors.nombre}</span>:<span></span>}
+                {errorNombre ? <span className="error">{errors.errorNombre}</span>:<span></span>}
                 <label><input placeholder="Apellido" type={"text"} name="apellido" onMouseLeave={cambiarApellido}/></label>
+                {errorApellido ? <span className="error">{errors.errorApellido}</span>:<span></span>}
                 <select name="pais" className="pais">
                     <option selected>País</option>
                     {paises.map(elem => {
                         return (<option value={elem.name}>{elem.name}</option>);
                     })}
                 </select>
-                <label><input placeholder="Provincia" type={"text"} name="provincia"/></label>
-                <label><input placeholder="DNI" type={"number"} name="dni"/></label>
-                <label><input placeholder="Dirección de facturación" type={"text"} name="direccion-factura"/></label>
-                <label><input placeholder="Dirección de entrega" type={"text"} name="direccion-entrega"/></label>
-                <label><input placeholder="E-mail" type={"email"} name="email"/></label>
+                <label><input placeholder="DNI" type={"number"} name="dni" onMouseLeave={cambiarDNI}/></label>
+                {errorDNI ? <span className="error">{errors.errorDNI}</span>:<span></span>}
+                <label><input placeholder="Provincia" type={"text"} name="provincia" onMouseLeave={cambiarProvincia}/></label>
+                {errorProvincia ? <span className="error">{errors.errorProvincia}</span>:<span></span>}
+                <label><input placeholder="Dirección de facturación" type={"text"} name="direccion-factura" onMouseLeave={cambiarDireccionFactura}/></label>
+                {errorDireccionFactura ? <span className="error">{errors.errorDireccionFactura}</span>:<span></span>}
+                <label><input placeholder="Dirección de entrega" type={"text"} name="direccion-entrega" onMouseLeave={cambiarDireccionEntrega}/></label>
+                {errorDireccionEntrega ? <span className="error">{errors.errorDireccionEntrega}</span>:<span></span>}
+                <label><input placeholder="E-mail" type={"email"} name="email" onMouseLeave={cambiarEmail}/></label>
+                {errorEmail ? <span className="error">{errors.errorEmail}</span>:<span></span>}
                 <div className="cantidad-de-productos"><label>Cantidad de productos </label>
                 {/* se pueden comprar hasta 3 libros a la vez */}
                 <select name="cantidad" onChange={cambiarPrecioProducto}>

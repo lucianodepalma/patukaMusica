@@ -7,6 +7,11 @@
 .error-icono {
     color: #bb2929;
 }
+.error {
+    margin: -10px auto auto 0px;
+    color: #bb2929;
+}
+
 h2{
     color: #043db0;
 }
@@ -48,4 +53,7 @@ input {
 .boton-compra:hover {
     background-color: #043db0;
     color: #fff;
+}
+.cantidad-de-productos {
+    margin-top: 5px;
 }
