@@ -23,6 +23,7 @@ label {
     flex-direction: column;
     color: #043db0;
     width: 500px;
+    margin-bottom: 50px;
 }
 input {
     margin-top: 10px;
@@ -35,7 +36,7 @@ input {
     margin-top: 15px;
     margin-bottom: 15px;
     width: 508px;
-    height: 36px;
+    height: 30px;
     border-radius: 7px;
 }
 .boton-compra{

@@ -11,7 +11,7 @@ function Main() {
             <div className='info-producto'>
                 <div>
                     <div className='titulo'><span>¡Esta es la letra y acordes de la canción LA FIESTA SELVÁTICA!</span></div>
-                    <div className='desc'><a href={document} target="_blank" rel='noreferrer' className='link'><img src={download} className='download'></img>Descargar archivo</a></div>
+                    <div className='desc'><a href={document} target="_blank" rel='noreferrer' className='link'><img src={download} className='download' alt=''></img>Descargar archivo</a></div>
                 </div>
             </div>
           </div>

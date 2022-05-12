@@ -1,30 +1,38 @@
 import React, { useEffect, useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 import '../assets/css/FormularioCompra.css';
-/* Custom hooks */
-import { validateField, validateEmail } from '../utils/useValidation';
 
 function Formulario () {
 
     const [paises, setPaises] = useState([]);
+    const [nombre, setNombre] = useState('');
+    const [apellido, setApellido] = useState('');
+    const [pais, setPais] = useState('pais');
+    const [dni, setDNI] = useState('');
+    const [provincia, setProvincia] = useState('');
+    const [direccionFactura, setDireccionFactura] = useState('');
+    const [direccionEntrega, setDireccionEntrega] = useState('');
+    const [email, setEmail] = useState('');
     const [errorNombre, setErrorNombre] = useState(false);
     const [errorApellido, setErrorApellido] = useState(false);
+    const [errorPais, setErrorPais] = useState(false);
     const [errorDNI, setErrorDNI] = useState(false);
     const [errorProvincia, setErrorProvincia] = useState(false);
     const [errorDireccionFactura, setErrorDireccionFactura] = useState(false);
     const [errorDireccionEntrega, setErrorDireccionEntrega] = useState(false);
     const [errorEmail, setErrorEmail] = useState(false);
+    const [fail, setFail] = useState(true);
     const [precioProducto, setPrecioProducto] = useState(3700);
-    const [fail, setFail] = useState(true)
     const form = useRef();
     const errors = {
-        errorNombre: 'Tienes que introducir tu nombre.',
-        errorApellido: 'Tienes que introducir tu apellido.',
-        errorProvincia: 'Tienes que introducir tu provincia.',
-        errorDNI: 'Tienes que introducir tu DNI.',
-        errorDireccionFactura: 'Tienes que introducir una dirección de facturación.',
-        errorDireccionEntrega: 'Tienes que introducir una dirección de entrega.',
-        errorEmail: 'Tienes que introducir tu dirección de email.'
+        nombre: 'Tienes que introducir tu nombre.',
+        apellido: 'Tienes que introducir tu apellido.',
+        pais: 'Tienes que seleccionar tu país.',
+        dni: 'Tienes que introducir tu DNI.',
+        provincia: 'Tienes que introducir tu provincia.',
+        direccionFactura: 'Tienes que introducir una dirección de facturación.',
+        direccionEntrega: 'Tienes que introducir una dirección de entrega.',
+        email: 'Tienes que introducir tu dirección de email.'
     };
 
     useEffect( () => {
@@ -41,8 +49,8 @@ function Formulario () {
             setErrorNombre (true);
             return;
         } else {
+            setNombre (value);
             setErrorNombre (false);
-
         }
     }
 
@@ -52,7 +60,19 @@ function Formulario () {
             setErrorApellido (true);
             return;
         } else {
+            setApellido (value);
             setErrorApellido (false);
+        }
+    }
+
+    
+    const cambiarPais = (e) => {
+        const value = e.target.value
+        if(value === 'pais') {
+            setErrorPais (true);
+        } else {
+            setPais (value);
+            setErrorPais (false);
         }
     }
 
@@ -62,6 +82,7 @@ function Formulario () {
             setErrorDNI (true);
             return;
         } else {
+            setDNI (value);
             setErrorDNI (false);
         }
     }
@@ -72,6 +93,7 @@ function Formulario () {
             setErrorProvincia (true);
             return;
         } else {
+            setProvincia (value);
             setErrorProvincia (false);
         }
     }
@@ -82,6 +104,7 @@ function Formulario () {
             setErrorDireccionFactura (true);
             return;
         } else {
+            setDireccionFactura (value);
             setErrorDireccionFactura (false);
         }
     }
@@ -92,6 +115,7 @@ function Formulario () {
             setErrorDireccionEntrega (true);
             return;
         } else {
+            setDireccionEntrega (value);
             setErrorDireccionEntrega (false);
         }
     }
@@ -102,6 +126,7 @@ function Formulario () {
             setErrorEmail (true);
             return;
         } else {
+            setEmail (value);
             setErrorEmail (false);
         }
     }
@@ -111,56 +136,79 @@ function Formulario () {
         setPrecioProducto (value*3700)
     }
 
-    //Metodo para comprobar si alguno de los campos tenga error cuando envian el formulario, si hay error devuelve true.
-    const comprobarErrores = () => {
-        if(errorNombre || errorApellido || errorDNI || errorProvincia || errorDireccionEntrega || errorDireccionFactura || errorEmail) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    const enviar = (e, req, res) => {
+    
+    const enviar = (e) => {
         e.preventDefault();
 
-        if (!comprobarErrores) {
-            emailjs.sendForm('service_3okwr8s', 'template_qcok7kf', form.current, 'AR1smxZMOiEXukHUr')
-            .then((result) => {
-              console.log(result.text);
-            }, (error) => {
-              console.log(error.text);
-            });
-            
+        if(!nombre.trim()) {
+            setErrorNombre(true)
+        }
+        if (!apellido.trim()) {
+            setErrorApellido(true)
+        }
+        if (!dni.trim()) {
+            setErrorDNI(true)
+        }
+        if (pais === 'pais') {
+            setErrorPais(true)
+        }
+        if (!provincia.trim()) {
+            setErrorProvincia(true)
+        }
+        if (!direccionEntrega.trim()) {
+            setErrorDireccionEntrega(true)
+        }
+        if (!direccionFactura.trim()) {
+            setErrorDireccionFactura(true)
+        }
+        if (!email.trim()) {
+            setErrorEmail(true)
+        }
+
+        if(errorNombre || errorApellido || errorDNI || errorPais || errorProvincia || errorDireccionEntrega || errorDireccionFactura || errorEmail) {
+            setFail(true);
         } else {
-            
+            setFail(false);
+        }
+
+        if (!fail) {
+            console.log('envie el mail');
+        } else {
+            console.log('hay errores');
         }
 
     }
-
+        /* emailjs.sendForm('service_3okwr8s', 'template_qcok7kf', form.current, 'AR1smxZMOiEXukHUr')
+            .then((result) => {
+            console.log(result.text);
+            }, (error) => {
+            console.log(error.text);
+        }); */
     return (
-        <div className="">
+        <div>
             <h2>Detalle de facturación</h2>
             <form className="formulario" ref={form} onSubmit={enviar}>
-                <label><input placeholder="Nombre" type={"text"} name="nombre" onMouseLeave={cambiarNombre}/></label>
-                {errorNombre ? <span className="error">{errors.errorNombre}</span>:<span></span>}
-                <label><input placeholder="Apellido" type={"text"} name="apellido" onMouseLeave={cambiarApellido}/></label>
-                {errorApellido ? <span className="error">{errors.errorApellido}</span>:<span></span>}
-                <select name="pais" className="pais">
-                    <option selected>País</option>
+                <label><input placeholder="Nombre" type={"text"} name="nombre" onChange={cambiarNombre}/></label>
+                {errorNombre ? <span className="error">{errors.nombre}</span>:<span></span>}
+                <label><input placeholder="Apellido" type={"text"} name="apellido" onChange={cambiarApellido}/></label>
+                {errorApellido ? <span className="error">{errors.apellido}</span>:<span></span>}
+                <select name="pais" className="pais" onChange={cambiarPais}>
+                    <option selected value='pais'>País</option>
                     {paises.map(elem => {
                         return (<option value={elem.name}>{elem.name}</option>);
                     })}
                 </select>
-                <label><input placeholder="DNI" type={"number"} name="dni" onMouseLeave={cambiarDNI}/></label>
-                {errorDNI ? <span className="error">{errors.errorDNI}</span>:<span></span>}
-                <label><input placeholder="Provincia" type={"text"} name="provincia" onMouseLeave={cambiarProvincia}/></label>
-                {errorProvincia ? <span className="error">{errors.errorProvincia}</span>:<span></span>}
-                <label><input placeholder="Dirección de facturación" type={"text"} name="direccion-factura" onMouseLeave={cambiarDireccionFactura}/></label>
-                {errorDireccionFactura ? <span className="error">{errors.errorDireccionFactura}</span>:<span></span>}
-                <label><input placeholder="Dirección de entrega" type={"text"} name="direccion-entrega" onMouseLeave={cambiarDireccionEntrega}/></label>
-                {errorDireccionEntrega ? <span className="error">{errors.errorDireccionEntrega}</span>:<span></span>}
-                <label><input placeholder="E-mail" type={"email"} name="email" onMouseLeave={cambiarEmail}/></label>
-                {errorEmail ? <span className="error">{errors.errorEmail}</span>:<span></span>}
+                {errorPais ? <span className="error">{errors.pais}</span>:<span></span>}
+                <label><input placeholder="DNI" type="text" name="dni" onChange={cambiarDNI}/></label>
+                {errorDNI ? <span className="error">{errors.dni}</span>:<span></span>}
+                <label><input placeholder="Provincia" type={"text"} name="provincia" onChange={cambiarProvincia}/></label>
+                {errorProvincia ? <span className="error">{errors.provincia}</span>:<span></span>}
+                <label><input placeholder="Dirección de facturación" type={"text"} name="direccion-factura" onChange={cambiarDireccionFactura}/></label>
+                {errorDireccionFactura ? <span className="error">{errors.direccionFactura}</span>:<span></span>}
+                <label><input placeholder="Dirección de entrega" type={"text"} name="direccion-entrega" onChange={cambiarDireccionEntrega}/></label>
+                {errorDireccionEntrega ? <span className="error">{errors.direccionEntrega}</span>:<span></span>}
+                <label><input placeholder="E-mail" type="email" name="email" onChange={cambiarEmail}/></label>
+                {errorEmail ? <span className="error">{errors.email}</span>:<span></span>}
                 <div className="cantidad-de-productos"><label>Cantidad de productos </label>
                 {/* se pueden comprar hasta 3 libros a la vez */}
                 <select name="cantidad" onChange={cambiarPrecioProducto}>
