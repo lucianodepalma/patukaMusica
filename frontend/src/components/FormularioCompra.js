@@ -21,8 +21,10 @@ function Formulario () {
     const [errorDireccionFactura, setErrorDireccionFactura] = useState(false);
     const [errorDireccionEntrega, setErrorDireccionEntrega] = useState(false);
     const [errorEmail, setErrorEmail] = useState(false);
+    const [errorValidEmail, setErrorValidEmail] = useState(false);
     const [fail, setFail] = useState(true);
     const [precioProducto, setPrecioProducto] = useState(3700);
+    const isValidEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const form = useRef();
     const errors = {
         nombre: 'Tienes que introducir tu nombre.',
@@ -32,7 +34,8 @@ function Formulario () {
         provincia: 'Tienes que introducir tu provincia.',
         direccionFactura: 'Tienes que introducir una dirección de facturación.',
         direccionEntrega: 'Tienes que introducir una dirección de entrega.',
-        email: 'Tienes que introducir tu dirección de email.'
+        email: 'Tienes que introducir tu dirección de email.',
+        validEmail: 'Tienes que introducir un correo electrónico válido'
     };
 
     useEffect( () => {
@@ -124,10 +127,14 @@ function Formulario () {
         const value=e.target.value;
         if(!value.trim()) {
             setErrorEmail (true);
-            return;
+        } else if (!isValidEmail.test(value)) {
+            setEmail(value);
+            setErrorEmail(false);
+            setErrorValidEmail(true);
         } else {
-            setEmail (value);
-            setErrorEmail (false);
+            setEmail(value);
+            setErrorEmail(false);
+            setErrorValidEmail(false);
         }
     }
 
@@ -161,11 +168,14 @@ function Formulario () {
         }
         if (!email.trim()) {
             setErrorEmail(true);
-        }
+        } else if (!isValidEmail.test(email)) {
+            setErrorEmail(false);
+            setErrorValidEmail(true);
+        };
 
         if(!nombre.trim() || !apellido.trim() || !dni.trim() || pais === 'pais' || !provincia.trim() || !direccionEntrega.trim() || !direccionFactura.trim() || !email.trim()) {
             setFail(true);
-        } else  if (errorNombre || errorApellido || errorDNI || errorPais || errorProvincia || errorDireccionEntrega || errorDireccionFactura || errorEmail){
+        } else  if (errorNombre || errorApellido || errorDNI || errorPais || errorProvincia || errorDireccionEntrega || errorDireccionFactura || errorEmail || errorValidEmail || errorValidEmail){
             setFail(true);
         } else {
             setFail(false);
@@ -177,18 +187,23 @@ function Formulario () {
         e.preventDefault();
 
         if (!fail) {
-            console.log('envie el mail');
-        } else {
-            console.log('hay errores');
+            emailjs.sendForm('service_3okwr8s', 'template_qcok7kf', form.current, 'AR1smxZMOiEXukHUr')
+                .then((result) => {
+                    console.log(result.text);
+                }, (error) => {
+                    console.log(error.text);
+                });
+            
+            if(precioProducto === 3700) {
+                window.location.href = "http://www.warmane.com";
+            } else if (precioProducto === 7400) {
+                window.location.href = "http://www.facebook.com"
+            } else {
+                window.location.href = "http://www.instagram.com"
+            }
         }
-
     }
-        /* emailjs.sendForm('service_3okwr8s', 'template_qcok7kf', form.current, 'AR1smxZMOiEXukHUr')
-            .then((result) => {
-            console.log(result.text);
-            }, (error) => {
-            console.log(error.text);
-        }); */
+
     return (
         <div>
             <h2>Detalle de facturación</h2>
@@ -212,8 +227,8 @@ function Formulario () {
                 {errorDireccionFactura ? <span className="error">{errors.direccionFactura}</span>:<span></span>}
                 <label><input placeholder="Dirección de entrega" type={"text"} name="direccion-entrega" onChange={cambiarDireccionEntrega}/></label>
                 {errorDireccionEntrega ? <span className="error">{errors.direccionEntrega}</span>:<span></span>}
-                <label><input placeholder="E-mail" type="email" name="email" onChange={cambiarEmail}/></label>
-                {errorEmail ? <span className="error">{errors.email}</span>:<span></span>}
+                <label><input placeholder="E-mail" type="text" name="email" onChange={cambiarEmail}/></label>
+                {errorEmail ? <span className="error">{errors.email}</span>: errorValidEmail ? <span className="error">{errors.validEmail}</span>:<span></span>}
                 <div className="cantidad-de-productos"><label>Cantidad de productos </label>
                 {/* se pueden comprar hasta 3 libros a la vez */}
                 <select name="cantidad" onChange={cambiarPrecioProducto}>
