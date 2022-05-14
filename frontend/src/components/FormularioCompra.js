@@ -136,40 +136,45 @@ function Formulario () {
         setPrecioProducto (value*3700)
     }
 
-    
-    const enviar = (e) => {
-        e.preventDefault();
+    const comprobarErrores = () => {
 
         if(!nombre.trim()) {
-            setErrorNombre(true)
+            setErrorNombre(true);
         }
         if (!apellido.trim()) {
-            setErrorApellido(true)
+            setErrorApellido(true);
         }
         if (!dni.trim()) {
-            setErrorDNI(true)
+            setErrorDNI(true);
         }
         if (pais === 'pais') {
-            setErrorPais(true)
+            setErrorPais(true);
         }
         if (!provincia.trim()) {
-            setErrorProvincia(true)
+            setErrorProvincia(true);
         }
         if (!direccionEntrega.trim()) {
-            setErrorDireccionEntrega(true)
+            setErrorDireccionEntrega(true);
         }
         if (!direccionFactura.trim()) {
-            setErrorDireccionFactura(true)
+            setErrorDireccionFactura(true);
         }
         if (!email.trim()) {
-            setErrorEmail(true)
+            setErrorEmail(true);
         }
 
-        if(errorNombre || errorApellido || errorDNI || errorPais || errorProvincia || errorDireccionEntrega || errorDireccionFactura || errorEmail) {
+        if(!nombre.trim() || !apellido.trim() || !dni.trim() || pais === 'pais' || !provincia.trim() || !direccionEntrega.trim() || !direccionFactura.trim() || !email.trim()) {
+            setFail(true);
+        } else  if (errorNombre || errorApellido || errorDNI || errorPais || errorProvincia || errorDireccionEntrega || errorDireccionFactura || errorEmail){
             setFail(true);
         } else {
             setFail(false);
         }
+
+    }
+
+    const enviar = (e) => {
+        e.preventDefault();
 
         if (!fail) {
             console.log('envie el mail');
@@ -217,7 +222,7 @@ function Formulario () {
                     <option value={'3'}>3</option>
                 </select></div>
                 <label>Precio final: ${precioProducto}</label>
-                <button className="boton-compra" type="submit" value="Pagar">Pagar</button>
+                <button className="boton-compra" type="submit" value="Pagar" onClick={comprobarErrores}>Pagar</button>
             </form>
         </div>
     )
