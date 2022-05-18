@@ -88,3 +88,31 @@ ul{
     border-width: 1px;
     border-color: black;
 }
+@media (max-width: 768px) {
+    .imagenFondo {
+        background-image: url('http://localhost:3000/fondoDePantallaWide.png');
+    }
+    .main {
+        margin-top: 20px;
+        width: 585px;
+        height: 1100px;
+    }  
+    .info-producto {
+        flex-direction: column;
+        width: 60%;
+        height: 70%;
+        margin-left: 16px;
+        justify-content: space-evenly;
+    }
+    .imagen-principal img{
+        width: 330px;
+    }
+    .imagenes-retrato img {
+        width: 80px;
+        height: 60px;
+    }
+    .descripcion-producto {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

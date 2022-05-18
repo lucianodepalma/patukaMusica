@@ -1,0 +1,38 @@
+.insta img {
+    width: 135px;
+    height: 135px;
+}
+.youtube {
+    margin-left: 190px;
+}
+.youtube img {
+    width: 200px;
+    height: 136px;
+}
+.redes{
+    display: flex;
+    flex-direction: column;
+}
+.titulo {
+    color: #043db0;
+    margin-bottom: 70px;
+    font-size: 30px;
+}
+.iconos {
+    display: flex;
+    flex-direction: row;
+}
+@media (max-width: 768px) {
+    .iconos {
+        flex-direction: column;
+    }
+    .iconos a {
+        margin-top: 60px;
+    }
+    .youtube {
+        margin-left: 0px;
+    }
+    div.titulo {
+        margin-bottom: 0px;
+    }
+}

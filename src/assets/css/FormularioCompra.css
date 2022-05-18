@@ -11,7 +11,6 @@
     margin: -10px auto auto 0px;
     color: #bb2929;
 }
-
 h2{
     color: #043db0;
 }
@@ -23,6 +22,7 @@ label {
     flex-direction: column;
     color: #043db0;
     width: 500px;
+    margin: auto;
     margin-bottom: 50px;
 }
 input {
@@ -57,4 +57,8 @@ input {
 }
 .cantidad-de-productos {
     margin-top: 5px;
+}
+.formularioCompra {
+    width: 1536px;
+    margin-top: 10px;
 }

@@ -4,8 +4,9 @@ import Libro from './Libro';
 import Redes from './Redes';
 import Descargas from './Descargas';
 import FormularioCompra from './FormularioCompra';
+import PagoAprobado from './PagoAprobado';
 import Header from './Header';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
@@ -16,8 +17,7 @@ function App() {
         <Route path='/redes' element={<Redes/>}/>
         <Route path='/descargas' element={<Descargas/>}/>
         <Route path='/formulario-compra' element={<FormularioCompra/>}/>
-        <Route path='/pagar' element={ Navigate }
-          loc="https://facebook.com"/>
+        <Route path='/pago-aprobado' element={ <PagoAprobado/> }/>
       </Routes>
     </div>
   );

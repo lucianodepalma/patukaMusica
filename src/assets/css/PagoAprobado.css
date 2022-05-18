@@ -1,0 +1,27 @@
+.info-pago {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 70%;
+    height: 55%;
+    align-items: center;
+    font-size: 27px;
+    border: solid;
+    border-radius: 15px;
+    border-color: black;
+    color: #043db0;
+}
+@media (max-width: 768px){
+    .info-pago {
+        flex-direction: column;
+        width: 60%;
+        height: 20%;
+        margin-left: 16px;
+        justify-content: space-evenly;
+        font-size: 25px;
+        margin-top: 50px;
+    }
+    .info-pago span {
+        margin: auto;
+    }
+}

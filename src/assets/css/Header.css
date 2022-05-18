@@ -18,3 +18,14 @@
     margin: 20px;
     margin-top: -15px;
 }
+
+@media (max-width: 768px) {
+    .header {
+        max-width: 585px;
+    }
+    .logo {
+        width: 200px;
+        margin-top: -5px;
+        margin-left: -15px;
+    }
+}

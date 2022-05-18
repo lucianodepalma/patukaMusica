@@ -19,3 +19,11 @@
     background-color: #043db0;
     color: #fff;
 }
+@media (max-width: 768px) {
+    .navBar {
+        font-size: 20px;
+    }
+    .navBar div {
+        height: 60px;
+    }
+}

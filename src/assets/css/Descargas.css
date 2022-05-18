@@ -26,3 +26,18 @@
     border-color: black;
     font-size: 30px;
 }
+@media (max-width: 768px) {
+    .desc {
+        width: 260px;
+        justify-content: normal;
+        margin: auto;
+        margin-top: 50px;
+    }
+    .download {
+        margin-bottom: -38px;
+        margin-right: 10px;
+    }
+    .link {
+        padding: 15px;
+    }
+}

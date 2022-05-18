@@ -205,7 +205,7 @@ function Formulario () {
     }
 
     return (
-        <div>
+        <div className="formularioCompra">
             <h2>Detalle de facturación</h2>
             <form className="formulario" ref={form} onSubmit={enviar}>
                 <label><input placeholder="Nombre" type={"text"} name="nombre" onChange={cambiarNombre}/></label>
