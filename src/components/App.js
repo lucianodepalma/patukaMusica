@@ -14,10 +14,10 @@ function App() {
       <Header/>
       <Routes>
         <Route exact path='/' element={<Libro/>}/>
-        <Route path='/redes' element={<Redes/>}/>
-        <Route path='/descargas' element={<Descargas/>}/>
-        <Route path='/formulario-compra' element={<FormularioCompra/>}/>
-        <Route path='/pago-aprobado' element={ <PagoAprobado/> }/>
+        <Route exact path='/redes' element={<Redes/>}/>
+        <Route exact path='/descargas' element={<Descargas/>}/>
+        <Route exact path='/formulario-compra' element={<FormularioCompra/>}/>
+        <Route exact path='/pago-aprobado' element={ <PagoAprobado/> }/>
       </Routes>
     </div>
   );
