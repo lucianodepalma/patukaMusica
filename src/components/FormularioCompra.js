@@ -23,7 +23,7 @@ function Formulario () {
     const [errorEmail, setErrorEmail] = useState(false);
     const [errorValidEmail, setErrorValidEmail] = useState(false);
     const [fail, setFail] = useState(true);
-    const [precioProducto, setPrecioProducto] = useState(3700);
+    const [precioProducto, setPrecioProducto] = useState(2290);
     const isValidEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const form = useRef();
     const errors = {
