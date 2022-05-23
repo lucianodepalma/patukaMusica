@@ -140,7 +140,7 @@ function Formulario () {
 
     const cambiarPrecioProducto = (e) => {
         const value = e.target.value;
-        setPrecioProducto (value*3700)
+        setPrecioProducto (value*2290)
     }
 
     const comprobarErrores = () => {
@@ -194,12 +194,12 @@ function Formulario () {
                     console.log(error.text);
                 });
             
-            if(precioProducto === 3700) {
-                window.location.href = "http://www.warmane.com";
-            } else if (precioProducto === 7400) {
-                window.location.href = "http://www.facebook.com"
+            if(precioProducto === 2290) {
+                window.location.href = "https://mpago.la/2oLRk45";
+            } else if (precioProducto === 4580) {
+                window.location.href = "https://mpago.la/32pfZh7"
             } else {
-                window.location.href = "http://www.instagram.com"
+                window.location.href = "https://mpago.la/22isJWZ"
             }
         }
     }
