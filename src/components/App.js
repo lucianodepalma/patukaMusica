@@ -6,19 +6,21 @@ import Descargas from './Descargas';
 import FormularioCompra from './FormularioCompra';
 import PagoAprobado from './PagoAprobado';
 import Header from './Header';
-import { Route, Routes } from 'react-router-dom';
+import { Switch, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Routes>
-        <Route exact path='/' element={<Libro/>}/>
-        <Route exact path='/redes' element={<Redes/>}/>
-        <Route exact path='/descargas' element={<Descargas/>}/>
-        <Route exact path='/formulario-compra' element={<FormularioCompra/>}/>
-        <Route exact path='/pago-aprobado' element={ <PagoAprobado/> }/>
-      </Routes>
+      <Switch>
+        <Routes>
+          <Route exact path='/' element={<Libro/>}/>
+          <Route path='/redes' element={<Redes/>}/>
+          <Route path='/descargas' element={<Descargas/>}/>
+          <Route path='/formulario-compra' element={<FormularioCompra/>}/>
+          <Route path='/pago-aprobado' element={ <PagoAprobado/> }/>
+        </Routes>
+      </Switch>
     </div>
   );
 }
