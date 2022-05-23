@@ -6,13 +6,12 @@ import Descargas from './Descargas';
 import FormularioCompra from './FormularioCompra';
 import PagoAprobado from './PagoAprobado';
 import Header from './Header';
-import { Switch, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Switch>
         <Routes>
           <Route exact path='/' element={<Libro/>}/>
           <Route path='/redes' element={<Redes/>}/>
@@ -20,7 +19,6 @@ function App() {
           <Route path='/formulario-compra' element={<FormularioCompra/>}/>
           <Route path='/pago-aprobado' element={ <PagoAprobado/> }/>
         </Routes>
-      </Switch>
     </div>
   );
 }
