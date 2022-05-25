@@ -7,7 +7,7 @@
 .header{
     display: flex;
     flex-direction: row;
-    height: 20vh;
+    height: 190px;
     justify-content: space-between;
     width: 100%;
     max-width: 1536px;
@@ -25,7 +25,17 @@
     }
     .logo {
         width: 200px;
-        margin-top: -5px;
-        margin-left: -15px;
+        margin-top: 20px;
+        margin-left: -10px;
+    }
+}
+@media (max-width: 575px) {
+    .header {
+        height: 235px;
+        max-width: 400px;
+        flex-direction: column;
+    }
+    .logo {
+        margin: auto;
     }
 }

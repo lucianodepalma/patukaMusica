@@ -197,9 +197,9 @@ function Formulario () {
             if(precioProducto === 2290) {
                 window.location.href = "https://mpago.la/2oLRk45";
             } else if (precioProducto === 4580) {
-                window.location.href = "https://mpago.la/32pfZh7"
+                window.location.href = "https://mpago.la/32pfZh7";
             } else {
-                window.location.href = "https://mpago.la/22isJWZ"
+                window.location.href = "https://mpago.la/22isJWZ";
             }
         }
     }

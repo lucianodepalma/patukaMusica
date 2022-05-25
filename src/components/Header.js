@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/css/Header.css';
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/logo-removebg-preview.png';
 import NavBar from './NavBar';
 //import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 //import {} from '@fortawesome/free-solid-svg-icons';
