@@ -36,3 +36,16 @@
         margin-bottom: 0px;
     }
 }
+@media (max-width: 575px) {
+    div .titulo {
+        font-size: 22px;
+    }
+    .insta img {
+        width: 115px;
+        height: 115px;
+    }
+    .youtube img {
+        width: 160px;
+        height: 109px;
+    }
+}

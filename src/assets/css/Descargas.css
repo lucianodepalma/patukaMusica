@@ -19,8 +19,14 @@
     text-align: center;
     justify-content: space-around;
 }
+.desc a {
+    display: flex;
+    padding: 20px;
+}
+.desc a img {
+    margin-top: -10px;
+}
 .link{
-    padding: 5px 15px 20px 15px;
     border: solid;
     border-radius: 15px;
     border-color: black;
@@ -39,5 +45,24 @@
     }
     .link {
         padding: 15px;
+    }
+    .desc a img {
+        margin-top: 0;
+    }
+}
+@media (max-width: 575px) {
+    div .titulo {
+        width: 230px;
+        margin: auto;
+    }
+    .desc {
+        width: 215px;
+    }
+    .link {
+        padding: 10px;
+        font-size: 22px;
+    }
+    .desc a {
+        width: 170px;
     }
 }
