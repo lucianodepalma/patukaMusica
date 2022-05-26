@@ -62,3 +62,22 @@ input {
     width: 1536px;
     margin-top: 10px;
 }
+@media (max-width: 575px) {
+    input {
+        width: 300px;
+    }
+    .pais {
+        width: 310px;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .cantidad-de-productos select {
+        width: 40px;
+        height: 30px;
+        font-size: 20px;
+    }
+    .formulario {
+        width: 315px;
+    }
+}
