@@ -1,7 +1,7 @@
 .main {
     margin-top: 10px;
-    width: 1536px;
-    height: 864px;
+    width: 1250px;
+    height: 700px;
 }
 .imagenFondo {
     background-image: url('https://patuka.000webhostapp.com/static/media/fondoDePantalla.png');
@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1920px;
+    max-width: 1250px;
     height: 100%;
     max-height: 1080px;
     margin: auto;
@@ -70,7 +70,7 @@ ul{
     padding-right: 20px;
 }
 .imagen-principal img {
-    width: 500px;
+    width: 400px;
     border-radius: 5px;
     border: solid;
     border-width: 1px;
@@ -82,8 +82,8 @@ ul{
     justify-content: space-between;
 }
 .imagenes-retrato img {
-    width: 100px;
-    height: 70px;
+    width: 90px;
+    height: 65px;
     border-radius: 5px;
     border: solid;
     border-width: 1px;
@@ -92,8 +92,8 @@ ul{
 @media (max-width: 1024px) {
     .imagenFondo {
         background-image: url('https://patuka.000webhostapp.com/static/media/fondoDePantalla1024.png');
-        max-width: 1024px;
-        max-height: 578px;
+        max-width: 921px;
+        max-height: 517px;
     }
     .main {
         margin-top: 20px;
@@ -101,11 +101,11 @@ ul{
         height: 691px;
     }
     .imagen-principal img {
-        width: 330px;
+        width: 295px;
     }
     .imagenes-retrato img {
-        width: 70px;
-        height: 55px;
+        width: 65px;
+        height: 50px;
     }
     .descripcion {
         font-size: 15px;
@@ -146,7 +146,7 @@ ul{
 @media (max-width: 575px) {
     .imagenFondo {
         background-image: url('https://patuka.000webhostapp.com/static/media/fondoDePantallaMobile.png');
-        max-width: 400px;
+        max-width: 390px;
         max-height: 705px;
     }
     .imagen-principal img{
@@ -157,6 +157,7 @@ ul{
         height: 40px;
     }
     .main {
+        width: 390px;
         height: 720px;
     }
     .nombre {

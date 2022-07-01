@@ -1,50 +1,44 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 import '../assets/css/FormularioCompra.css';
 
 function Formulario () {
 
-    const [paises, setPaises] = useState([]);
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
-    const [pais, setPais] = useState('pais');
     const [dni, setDNI] = useState('');
     const [provincia, setProvincia] = useState('');
+    const [localidad, setLocalidad] = useState('');
+    const [cp, setCP] = useState('');
     const [direccionFactura, setDireccionFactura] = useState('');
     const [direccionEntrega, setDireccionEntrega] = useState('');
     const [email, setEmail] = useState('');
     const [errorNombre, setErrorNombre] = useState(false);
     const [errorApellido, setErrorApellido] = useState(false);
-    const [errorPais, setErrorPais] = useState(false);
     const [errorDNI, setErrorDNI] = useState(false);
     const [errorProvincia, setErrorProvincia] = useState(false);
+    const [errorLocalidad, setErrorLocalidad] = useState(false);
+    const [errorCP, setErrorCP] = useState(false);
     const [errorDireccionFactura, setErrorDireccionFactura] = useState(false);
     const [errorDireccionEntrega, setErrorDireccionEntrega] = useState(false);
     const [errorEmail, setErrorEmail] = useState(false);
     const [errorValidEmail, setErrorValidEmail] = useState(false);
     const [fail, setFail] = useState(true);
-    const [precioProducto, setPrecioProducto] = useState(2290);
+    const [precioProducto, setPrecioProducto] = useState(2850);
     const isValidEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const form = useRef();
     const errors = {
         nombre: 'Tienes que introducir tu nombre.',
         apellido: 'Tienes que introducir tu apellido.',
-        pais: 'Tienes que seleccionar tu país.',
         dni: 'Tienes que introducir tu DNI.',
         provincia: 'Tienes que introducir tu provincia.',
+        localidad: 'Tienes que introducir tu localidad.',
+        cp: 'Tienes que introducir tu código postal.',
         direccionFactura: 'Tienes que introducir una dirección de facturación.',
         direccionEntrega: 'Tienes que introducir una dirección de entrega.',
         email: 'Tienes que introducir tu dirección de email.',
         validEmail: 'Tienes que introducir un correo electrónico válido'
     };
-
-    useEffect( () => {
-        fetch ('https://restcountries.com/v2/all')
-        .then (response => response.json())
-        .then (data => {
-            setPaises(data)
-        })
-    }, []);
 
     const cambiarNombre = (e) => {
         const value=e.target.value;
@@ -68,17 +62,6 @@ function Formulario () {
         }
     }
 
-    
-    const cambiarPais = (e) => {
-        const value = e.target.value
-        if(value === 'pais') {
-            setErrorPais (true);
-        } else {
-            setPais (value);
-            setErrorPais (false);
-        }
-    }
-
     const cambiarDNI = (e) => {
         const value=e.target.value;
         if(!value.trim()) {
@@ -98,6 +81,27 @@ function Formulario () {
         } else {
             setProvincia (value);
             setErrorProvincia (false);
+        }
+    }
+    
+    const cambiarLocalidad = (e) => {
+        const value = e.target.value
+        if(!value.trim()) {
+            setErrorLocalidad (true);
+            return;
+        } else {
+            setLocalidad (value);
+            setErrorLocalidad (false);
+        }
+    }
+    
+    const cambiarCP = (e) => {
+        const value = e.target.value
+        if(!value.trim()) {
+            setErrorCP (true);
+        } else {
+            setCP (value);
+            setErrorCP (false);
         }
     }
 
@@ -140,7 +144,7 @@ function Formulario () {
 
     const cambiarPrecioProducto = (e) => {
         const value = e.target.value;
-        setPrecioProducto (value*2290)
+        setPrecioProducto (value*2850)
     }
 
     const comprobarErrores = () => {
@@ -154,11 +158,16 @@ function Formulario () {
         if (!dni.trim()) {
             setErrorDNI(true);
         }
-        if (pais === 'pais') {
-            setErrorPais(true);
-        }
         if (!provincia.trim()) {
             setErrorProvincia(true);
+        }
+        
+        if (!localidad.trim()) {
+            setErrorLocalidad(true);
+        }
+        
+        if (!cp.trim()) {
+            setErrorCP(true);
         }
         if (!direccionEntrega.trim()) {
             setErrorDireccionEntrega(true);
@@ -173,9 +182,9 @@ function Formulario () {
             setErrorValidEmail(true);
         };
 
-        if(!nombre.trim() || !apellido.trim() || !dni.trim() || pais === 'pais' || !provincia.trim() || !direccionEntrega.trim() || !direccionFactura.trim() || !email.trim()) {
+        if(!nombre.trim() || !apellido.trim() || !dni.trim() || !provincia.trim() || !localidad.trim() || !cp.trim() || !direccionEntrega.trim() || !direccionFactura.trim() || !email.trim()) {
             setFail(true);
-        } else  if (errorNombre || errorApellido || errorDNI || errorPais || errorProvincia || errorDireccionEntrega || errorDireccionFactura || errorEmail || errorValidEmail || errorValidEmail){
+        } else  if (errorNombre || errorApellido || errorDNI || errorProvincia || errorLocalidad || errorCP || errorDireccionEntrega || errorDireccionFactura || errorEmail || errorValidEmail || errorValidEmail){
             setFail(true);
         } else {
             setFail(false);
@@ -206,29 +215,35 @@ function Formulario () {
 
     return (
         <div className="formularioCompra">
-            <h2>Detalle de facturación</h2>
+            <h2>Info de contacto</h2>
             <form className="formulario" ref={form} onSubmit={enviar}>
                 <label><input placeholder="Nombre" type={"text"} name="nombre" onChange={cambiarNombre}/></label>
                 {errorNombre ? <span className="error">{errors.nombre}</span>:<span></span>}
+
                 <label><input placeholder="Apellido" type={"text"} name="apellido" onChange={cambiarApellido}/></label>
                 {errorApellido ? <span className="error">{errors.apellido}</span>:<span></span>}
-                <select name="pais" className="pais" onChange={cambiarPais}>
-                    <option selected value='pais'>País</option>
-                    {paises.map(elem => {
-                        return (<option value={elem.name}>{elem.name}</option>);
-                    })}
-                </select>
-                {errorPais ? <span className="error">{errors.pais}</span>:<span></span>}
+
                 <label><input placeholder="DNI" type="text" name="dni" onChange={cambiarDNI}/></label>
                 {errorDNI ? <span className="error">{errors.dni}</span>:<span></span>}
+
                 <label><input placeholder="Provincia" type={"text"} name="provincia" onChange={cambiarProvincia}/></label>
                 {errorProvincia ? <span className="error">{errors.provincia}</span>:<span></span>}
+
+                <label><input placeholder="Localidad" type={"text"} name="localidad" onChange={cambiarLocalidad}/></label>
+                {errorLocalidad ? <span className="error">{errors.localidad}</span>:<span></span>}
+
+                <label><input placeholder="Código postal" type={"text"} name="cp" onChange={cambiarCP}/></label>
+                {errorCP ? <span className="error">{errors.cp}</span>:<span></span>}
+
                 <label><input placeholder="Dirección de facturación" type={"text"} name="direccion-factura" onChange={cambiarDireccionFactura}/></label>
                 {errorDireccionFactura ? <span className="error">{errors.direccionFactura}</span>:<span></span>}
+
                 <label><input placeholder="Dirección de entrega" type={"text"} name="direccion-entrega" onChange={cambiarDireccionEntrega}/></label>
                 {errorDireccionEntrega ? <span className="error">{errors.direccionEntrega}</span>:<span></span>}
+
                 <label><input placeholder="E-mail" type="text" name="email" onChange={cambiarEmail}/></label>
                 {errorEmail ? <span className="error">{errors.email}</span>: errorValidEmail ? <span className="error">{errors.validEmail}</span>:<span></span>}
+
                 <div className="cantidad-de-productos"><label>Cantidad de productos </label>
                 {/* se pueden comprar hasta 3 libros a la vez */}
                 <select name="cantidad" onChange={cambiarPrecioProducto}>
@@ -236,7 +251,8 @@ function Formulario () {
                     <option value={'2'}>2</option>
                     <option value={'3'}>3</option>
                 </select></div>
-                <label>Precio final: ${precioProducto}</label>
+                
+                <label>Precio con envío incluido: ${precioProducto}</label>
                 <button className="boton-compra" type="submit" value="Pagar" onClick={comprobarErrores}>Pagar</button>
             </form>
         </div>
