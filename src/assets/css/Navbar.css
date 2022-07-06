@@ -26,9 +26,14 @@
 }
 @media (max-width: 768px) {
     .navBar {
-        font-size: 20px;
+        font-size: 28px;
     }
     .navBar div {
         height: 45px;
+    }
+}
+@media (max-width: 375px) {
+    .navBar {
+        font-size: 20px;
     }
 }

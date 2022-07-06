@@ -34,6 +34,7 @@
         height: 235px;
         max-width: 400px;
         flex-direction: column;
+        margin: auto;
     }
     .logo {
         margin: auto;

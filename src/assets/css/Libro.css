@@ -48,7 +48,7 @@ ul{
 }
 .descripcion {
     color: #043db0;
-    font-size: large;
+    font-size: 22px;
 }
 .boton-compra {
     font-size: 25px;
@@ -108,7 +108,7 @@ ul{
         height: 50px;
     }
     .descripcion {
-        font-size: 15px;
+        font-size: 17px;
     }
     .nombre {
         font-size: 30px;
@@ -137,7 +137,7 @@ ul{
         margin-right: 10px;
     }
     .descripcion {
-        font-size: 16px;
+        font-size: 18px;
     }
     .nombre {
         font-size: 32px;
@@ -164,6 +164,6 @@ ul{
         font-size: 24px;
     }
     .descripcion {
-        font-size: 13px;
+        font-size: 15px;
     }
 }
