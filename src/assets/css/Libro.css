@@ -49,6 +49,7 @@ ul{
 .descripcion {
     color: #043db0;
     font-size: 22px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 .boton-compra {
     font-size: 25px;
