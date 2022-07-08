@@ -216,7 +216,7 @@ function Formulario () {
     return (
         <div className="formularioCompra">
             <h2>Info de contacto</h2>
-            <span className="precaucion">Los libros solo estan disponibles en Argentina</span>
+            <span className="precaucion">*ATENCION: Los libros solo estan disponibles en Argentina.*</span>
             <form className="formulario" ref={form} onSubmit={enviar}>
                 <label><input placeholder="Nombre" type={"text"} name="nombre" onChange={cambiarNombre}/></label>
                 {errorNombre ? <span className="error">{errors.nombre}</span>:<span></span>}
