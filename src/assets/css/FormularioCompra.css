@@ -10,7 +10,15 @@
 .error {
     margin: -10px auto auto 0px;
     color: #bb2929;
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.oculto {
+    display: none;
+}
+.visible {
+    color: black;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 h2{
     color: #043db0;
@@ -19,8 +27,9 @@ h2{
 }
 .precaucion {
     color: #043db0;
-    font-size: 20px;
+    font-size: 18px;
     margin-left: 22px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 label {
     margin-top: 10px;
@@ -41,6 +50,9 @@ input {
     height: 25px;
     border-radius: 7px;
 }
+.precio {
+    font-family: 'Roboto Condensed', sans-serif;
+}
 .boton-compra{
     font-size: 27px;
     font-family: 'Yellowtail', cursive;
@@ -53,6 +65,7 @@ input {
     border: solid;
     border-color: #043db0;
     border-width: 2px;
+    font-family: 'Roboto Condensed', sans-serif;
 
 }
 .boton-compra:hover {
@@ -61,6 +74,7 @@ input {
 }
 .cantidad-de-productos {
     margin-top: 5px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 select {
     width: 35px;

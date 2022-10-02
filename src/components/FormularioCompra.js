@@ -10,7 +10,7 @@ function Formulario () {
     const [provincia, setProvincia] = useState('');
     const [localidad, setLocalidad] = useState('');
     const [cp, setCP] = useState('');
-    const [direccionFactura, setDireccionFactura] = useState('');
+    /* const [direccionFactura, setDireccionFactura] = useState(''); */
     const [direccionEntrega, setDireccionEntrega] = useState('');
     const [email, setEmail] = useState('');
     const [errorNombre, setErrorNombre] = useState(false);
@@ -19,12 +19,12 @@ function Formulario () {
     const [errorProvincia, setErrorProvincia] = useState(false);
     const [errorLocalidad, setErrorLocalidad] = useState(false);
     const [errorCP, setErrorCP] = useState(false);
-    const [errorDireccionFactura, setErrorDireccionFactura] = useState(false);
+    /* const [errorDireccionFactura, setErrorDireccionFactura] = useState(false); */
     const [errorDireccionEntrega, setErrorDireccionEntrega] = useState(false);
     const [errorEmail, setErrorEmail] = useState(false);
     const [errorValidEmail, setErrorValidEmail] = useState(false);
     const [fail, setFail] = useState(true);
-    const [precioProducto, setPrecioProducto] = useState(2850);
+    const [precioProducto, setPrecioProducto] = useState(3000);
     const isValidEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const form = useRef();
     const errors = {
@@ -35,7 +35,7 @@ function Formulario () {
         localidad: 'Tienes que introducir tu localidad.',
         cp: 'Tienes que introducir tu código postal.',
         direccionFactura: 'Tienes que introducir una dirección de facturación.',
-        direccionEntrega: 'Tienes que introducir una dirección de entrega.',
+        direccionEntrega: 'Tienes que introducir una Direccion.',
         email: 'Tienes que introducir tu dirección de email.',
         validEmail: 'Tienes que introducir un correo electrónico válido'
     };
@@ -47,6 +47,7 @@ function Formulario () {
             return;
         } else {
             setNombre (value);
+            
             setErrorNombre (false);
         }
     }
@@ -105,7 +106,7 @@ function Formulario () {
         }
     }
 
-    const cambiarDireccionFactura = (e) => {
+    /* const cambiarDireccionFactura = (e) => {
         const value=e.target.value;
         if(!value.trim()) {
             setErrorDireccionFactura (true);
@@ -114,7 +115,7 @@ function Formulario () {
             setDireccionFactura (value);
             setErrorDireccionFactura (false);
         }
-    }
+    } */
 
     const cambiarDireccionEntrega = (e) => {
         const value=e.target.value;
@@ -144,7 +145,7 @@ function Formulario () {
 
     const cambiarPrecioProducto = (e) => {
         const value = e.target.value;
-        setPrecioProducto (value*2850)
+        setPrecioProducto (value*3000)
     }
 
     const comprobarErrores = () => {
@@ -161,20 +162,18 @@ function Formulario () {
         if (!provincia.trim()) {
             setErrorProvincia(true);
         }
-        
         if (!localidad.trim()) {
             setErrorLocalidad(true);
         }
-        
         if (!cp.trim()) {
             setErrorCP(true);
         }
         if (!direccionEntrega.trim()) {
             setErrorDireccionEntrega(true);
         }
-        if (!direccionFactura.trim()) {
+        /* if (!direccionFactura.trim()) {
             setErrorDireccionFactura(true);
-        }
+        } */
         if (!email.trim()) {
             setErrorEmail(true);
         } else if (!isValidEmail.test(email)) {
@@ -182,9 +181,9 @@ function Formulario () {
             setErrorValidEmail(true);
         };
 
-        if(!nombre.trim() || !apellido.trim() || !dni.trim() || !provincia.trim() || !localidad.trim() || !cp.trim() || !direccionEntrega.trim() || !direccionFactura.trim() || !email.trim()) {
+        if(!nombre.trim() || !apellido.trim() || !dni.trim() || !provincia.trim() || !localidad.trim() || !cp.trim() || !direccionEntrega.trim() /* || !direccionFactura.trim() */ || !email.trim()) {
             setFail(true);
-        } else  if (errorNombre || errorApellido || errorDNI || errorProvincia || errorLocalidad || errorCP || errorDireccionEntrega || errorDireccionFactura || errorEmail || errorValidEmail || errorValidEmail){
+        } else  if (errorNombre || errorApellido || errorDNI || errorProvincia || errorLocalidad || errorCP || errorDireccionEntrega /* || errorDireccionFactura */ || errorEmail || errorValidEmail || errorValidEmail){
             setFail(true);
         } else {
             setFail(false);
@@ -203,21 +202,22 @@ function Formulario () {
                     console.log(error.text);
                 });
             
-            if(precioProducto === 2290) {
-                window.location.href = "https://mpago.la/2oLRk45";
-            } else if (precioProducto === 4580) {
-                window.location.href = "https://mpago.la/32pfZh7";
+            if(precioProducto === 3000) {
+                window.location.href = "https://mpago.la/1bxK2dp";
+            } else if (precioProducto === 6000) {
+                window.location.href = "https://mpago.la/2LQQq42";
             } else {
-                window.location.href = "https://mpago.la/22isJWZ";
+                window.location.href = "https://mpago.la/1eLqQXQ";
             }
         }
     }
 
     return (
         <div className="formularioCompra">
-            <h2>Info de contacto</h2>
+            <h2>Información de contacto</h2>
             <span className="precaucion">*ATENCION: Los libros solo estan disponibles en Argentina.*</span>
             <form className="formulario" ref={form} onSubmit={enviar}>
+                
                 <label><input placeholder="Nombre" type={"text"} name="nombre" onChange={cambiarNombre}/></label>
                 {errorNombre ? <span className="error">{errors.nombre}</span>:<span></span>}
 
@@ -236,14 +236,16 @@ function Formulario () {
                 <label><input placeholder="Código postal" type={"text"} name="cp" onChange={cambiarCP}/></label>
                 {errorCP ? <span className="error">{errors.cp}</span>:<span></span>}
 
-                <label><input placeholder="Dirección de facturación" type={"text"} name="direccion-factura" onChange={cambiarDireccionFactura}/></label>
-                {errorDireccionFactura ? <span className="error">{errors.direccionFactura}</span>:<span></span>}
+                {/* <label><input placeholder="Dirección de facturación" type={"text"} name="direccion-factura" onChange={cambiarDireccionFactura}/></label>
+                {errorDireccionFactura ? <span className="error">{errors.direccionFactura}</span>:<span></span>} */}
 
-                <label><input placeholder="Dirección de entrega" type={"text"} name="direccion-entrega" onChange={cambiarDireccionEntrega}/></label>
+                <label><input placeholder="Direccion" type={"text"} name="direccion-entrega" onChange={cambiarDireccionEntrega}/></label>
                 {errorDireccionEntrega ? <span className="error">{errors.direccionEntrega}</span>:<span></span>}
 
                 <label><input placeholder="E-mail" type="text" name="email" onChange={cambiarEmail}/></label>
                 {errorEmail ? <span className="error">{errors.email}</span>: errorValidEmail ? <span className="error">{errors.validEmail}</span>:<span></span>}
+
+                <label className="precaucion">*ACLARACIÓN: Solo se realizan envios a travez de Correo Argentino a la sucursal mas cercana del domicilio de entrega*</label>
 
                 <div className="cantidad-de-productos"><label>Cantidad de productos </label>
                 {/* se pueden comprar hasta 3 libros a la vez */}
@@ -253,7 +255,7 @@ function Formulario () {
                     <option value={'3'}>3</option>
                 </select></div>
                 
-                <label>Precio con envío incluido: ${precioProducto}</label>
+                <label className="precio">Precio con envío incluido: ${precioProducto}</label>
                 <button className="boton-compra" type="submit" value="Pagar" onClick={comprobarErrores}>Pagar</button>
             </form>
         </div>
