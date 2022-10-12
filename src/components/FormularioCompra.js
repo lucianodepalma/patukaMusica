@@ -245,7 +245,7 @@ function Formulario () {
                 <label><input placeholder="E-mail" type="text" name="email" onChange={cambiarEmail}/></label>
                 {errorEmail ? <span className="error">{errors.email}</span>: errorValidEmail ? <span className="error">{errors.validEmail}</span>:<span></span>}
 
-                <label className="precaucion">*ACLARACIÓN: Solo se realizan envios a travez de Correo Argentino a la sucursal mas cercana del domicilio de entrega*</label>
+                <label className="precaucion">*ACLARACIÓN: Solo se realizan envios a través de Correo Argentino a la sucursal mas cercana del domicilio de entrega*</label>
 
                 <div className="cantidad-de-productos"><label>Cantidad de productos </label>
                 {/* se pueden comprar hasta 3 libros a la vez */}
