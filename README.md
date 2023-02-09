@@ -2,5 +2,6 @@
 Desarrolada en React
 
 ## Diseño e Ilustraciones 
-Luciano De Palma
+Luciano De Palma y
 Carolina De Palma
+
